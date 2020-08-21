@@ -12,7 +12,47 @@
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="env.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <style>
+
+      .Comment{
+        margin-top: 10px;
+        margin-left: 20px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+      }
+
+      .modal{
+        margin-top: 100px;
+      }
+
+      .likeCommentbtn{
+        margin-top: 10px;
+        margin-left: 10px;
+      }
+
+      .photoPost{
+        margin: auto;
+        border-radius: 20px;
+      }
+
+      .username{
+        margin-left: 10px;
+        font-family:cursive
+      }
+
+      .photoContainer{
+        width: 500px;
+        margin: auto;
+      }
+
+      .row{
+        border: 1px solid black;
+        border-radius: 10px;
+        margin-bottom: 50px;
+        padding-bottom: 15px;
+      }
+
       img {
         display: block;
         margin-left: 10px;
@@ -36,45 +76,67 @@
         top: 0;
         z-index:9999
       }
+
     </style>
     <!--script src="styles.css"></script-->
     </head>
     <body>
-        <!-- Dropdown Structure -->
+        <!-- Dropdown Structure>
 <ul id="dropdown1" class="dropdown-content">
     <li><a href="#!">Profile</a></li>
     <li class="divider"></li>
     <li><a href="#!">Log out</a></li>
-  </ul>
+  </ul-->
 
   <nav class="#e3f2fd blue lighten-5">
     <div class="nav-wrapper">
       <a href="index.html" class="brand-logo"><strong class="black-text">Instagram</strong></a>
       <ul class="right hide-on-med-and-down">
-        <li><a class="black-text modal-trigger" href="#modal1">Post</a></li>
+        <!--li><a class="black-text modal-trigger" href="#photoModal" style="font-size:30px">+</a></li-->
+        <li><a class="black-text modal-trigger" href="#photoModal" title="Add a Photo"> <i class="large material-icons">add_a_photo</i></a></li>
         <li><a class="black-text" href="index.html">Feed</a></li>
         <li><a class="black-text" href="Popular.html">Popular</a></li>
-        <li><a class="black-text" href="badges.html">Activity log</a></li>
-        <!-- Dropdown Trigger -->
-        <li><a class="dropdown-trigger black-text" href="#!" data-target="dropdown1">Profile<i class="material-icons right"></i></a></li>
-        <!--<input type="text" placeholder="Search.."> -->
+        <li><a class="black-text modal-trigger" href="#loginModal" title="Log in"> <i class="large material-icons">account_circle</i></a></li>
       </ul>
     </div>
   </nav>
 
+  <!-- Dropdown Structure -->
+<ul id="dropdownAddPhoto" class="dropdown-content">
+  <li><a class="modal-trigger" href="#photoModal">Add a photo</a></li>
+</ul>
+
   <!-- Modal Structure -->
-  <div id="modal1" class="modal">
+  <div id="photoModal" class="modal">
     <div class="modal-content">
-      <p>Choose a photo to upload</p>
-    </div>
-    <div class="modal-footer">
-      <form action="/photo" enctype="multipart/form-data" method="POST"> 
-        <input type="file" name="photo" accept="image/*" />
-        <input type="submit" value="Upload Photo"/>
+      <p>New Post</p>
+      <form action="/photos" enctype="multipart/form-data" method="POST"> 
+        <input type="file" name="photo" accept="image/*"/>
+        <input type="submit" value="Share"/>
       </form>
-      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
     </div>
   </div>
+
+  <div id="addCommentModal" class="modal">
+    <div class="modal-content">
+      <p>Add comment</p>
+      <input id="messageBox" type="text" class="validate">
+    </div>
+    <div class="modal-footer">
+      <a id="btnComment" class="waves-effect waves-light btn">Add a comment</a>
+    </div>
+  </div>
+
+  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <p>Enter username</p>
+      <input id="nameBox" type="text" class="validate">
+    </div>
+    <div class="modal-footer">
+      <a id="login" href="#!" class="modal-close waves-effect waves-light btn">Log in</a>
+    </div>
+  </div>
+
 <br>
 <br>
 <br>
@@ -85,11 +147,9 @@
   <input type="submit" value="Upload Photo"/>
 </form-->
 
-  <div class="#container">
+<div class="#container photoContainer" id="photos">
     
-    <div class="row" id="photos">
-
-    </div>
+    
 </div>
 
         <!-- <h1>Instagram</h1> -->
