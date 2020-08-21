@@ -44,7 +44,6 @@ $(document).ready(function(){
           commentsTag += com.username + ': '+ com.message + '<br>'
        })
 
-
         var pattern = "photos/"
         var photoid = image._id
         console.log(photoid)

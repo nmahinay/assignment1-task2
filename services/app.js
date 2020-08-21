@@ -55,14 +55,6 @@ app.post('/comments', (req, res)=>{
   insertComment(req,res)
 })
 
-//get comment endpoint
-app.get('/comments', (req, res)=>{
-  retrieveComments(res)
-})
-
-//
-
-
 var port=3000;
 app.listen(port)
 log('Server listening on: '+port)
@@ -74,24 +66,19 @@ const client = new MongoClient(uri, { useNewUrlParser: true });
 //collection objects
 let collectionPhotos;
 
-
 client.connect(err => {
  collectionPhotos = client.db("instagram").collection("photos")
 });
 
 //collection photos functions
-
 const insertPhoto=(file) =>{
-  //console.log(file)
   collectionPhotos.insertOne(file)
 }
-
 
 const retrievePhotos=(res)=>{
   collectionPhotos.find().toArray(function(err,result){
 
     if (err) throw err;
-   // console.log(result)
     res.send(result)
   })
 }
@@ -102,7 +89,6 @@ const insertComment=(req,res)=>{
   let photoid=req.body.photoid
   let username=req.body.username
  
-
   collectionPhotos.update(
     {  "_id":new ObjectId(photoid) },
     {
@@ -118,19 +104,6 @@ const insertComment=(req,res)=>{
     message, username, photoid
   });
 }
-
-const retrieveComments=(res)=>{
-  collectionComments.find().toArray(function(err,result){
-
-    if (err) throw err;
-    res.send(result)
-  })
-}
-
-//login
-app.get('/login', (req,res)=>{
-  console.log('login', req.body)
-})
 
 app.post('/login', (req,res)=>{
   let data = req.body;
